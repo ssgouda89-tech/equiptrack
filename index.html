@@ -1,88 +1,144 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#4f46e5"><title>EquipTrack — Equipment custody</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123044">
+<title>EquipTrack — Equipment Custody</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--ink:#172033;--muted:#68738a;--line:#e4e9ee;--bg:#f3f6f8;--brand:#284b63;--brand2:#477b96;--green:#16845b;--amber:#a76512}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;font-weight:650}.primary{background:var(--brand);color:#fff}.soft{background:#e9f1f5;color:var(--brand)}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#fff0ef;color:#b42318}.wrap{max-width:1050px;margin:auto;padding:18px 16px 100px}.top{background:#102b3b;color:#fff;border-bottom:1px solid #24485c;position:sticky;top:0;z-index:3}.top .tag{color:#b9cbd5}.mark{background:#e0f1f5;color:#17394c}.topin{max-width:1050px;margin:auto;padding:13px 16px;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:19px}.mark{width:36px;height:36px;border-radius:11px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:20px}.tag{font-size:11px;color:var(--muted);font-weight:600}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav button{background:transparent;color:var(--muted);padding:9px}.nav button.active{background:#e9f1f5;color:var(--brand)}h1{font-size:27px;margin:8px 0}h2{font-size:18px;margin:0 0 12px}p{color:var(--muted);line-height:1.5}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat,.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px}.stat strong{display:block;font-size:25px}.stat span{font-size:12px;color:var(--muted)}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.actions{display:flex;gap:8px;flex-wrap:wrap}.stack{display:grid;gap:12px}.item{display:flex;gap:13px;align-items:center}.pic{width:48px;height:48px;border-radius:13px;background:#e9f1f5;display:grid;place-items:center;font-size:24px}.meta{min-width:0;flex:1}.meta b{display:block}.meta small{color:var(--muted)}.pill{font-size:11px;border-radius:30px;padding:5px 9px;background:#eef2f7;color:#526078;white-space:nowrap}.pill.green{background:#e7f7ef;color:var(--green)}.pill.amber{background:#fff3df;color:var(--amber)}.form{display:grid;gap:11px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:5px;color:#4d5870}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid #dfe3ec;border-radius:11px;background:#fff;color:var(--ink)}.field textarea{min-height:75px}.hidden{display:none!important}.muted{color:var(--muted)}.empty{text-align:center;padding:30px 12px;color:var(--muted)}.timeline{border-left:2px solid #dedcff;margin:8px 0 8px 9px;padding-left:18px;display:grid;gap:17px}.event{position:relative}.event:before{content:"";position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--brand)}.event small{color:var(--muted)}.notice{background:#eaf2f6;border-radius:12px;padding:12px;color:#284b63;font-size:13px}.modal{position:fixed;inset:0;background:#10182888;z-index:5;display:grid;place-items:end center;padding:12px}.sheet{background:white;width:min(100%,560px);max-height:88vh;overflow:auto;border-radius:20px;padding:20px}.sheethead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}#qr{display:flex;justify-content:center;padding:15px}footer{font-size:11px;color:var(--muted);text-align:center;padding:20px}.mobilehint{display:none}
-@media(max-width:650px){.wrap{padding:15px 13px 90px}.grid{grid-template-columns:repeat(2,1fr)}.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:7px 3px calc(7px + env(safe-area-inset-bottom));z-index:4}.nav button{font-size:11px;padding:8px 6px}.topin{padding:10px 13px}.mobilehint{display:block}.stat,.card{padding:13px}}
-</style></head>
+:root{--navy:#123044;--blue:#28536a;--pale:#eaf1f4;--bg:#f3f6f8;--ink:#17232d;--muted:#6b7780;--line:#dce4e8;--white:#fff;--green:#19734c;--amber:#9a6500;--red:#a83b3b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{background:var(--navy);color:white;padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:5}
+.logo{width:42px;height:42px;border-radius:13px;background:#294d61;display:grid;place-items:center;font-size:24px;font-weight:700}
+.brand{font-size:20px;font-weight:700}.tagline{font-size:11px;letter-spacing:1px;color:#c5d3da}.demo{margin-left:auto;font-size:11px;color:#c5d3da}
+main{max-width:980px;margin:24px auto;padding:0 16px 100px}
+h1{font-size:27px;line-height:1.2;margin:4px 0 8px}h2{font-size:19px;margin:0}
+.muted{color:var(--muted)}.eyebrow{font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0;box-shadow:0 2px 8px #102b3a08}
+.signup{max-width:560px;margin:30px auto;padding:24px}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input,select,textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:80px}button{border:0;border-radius:12px;padding:12px 16px;background:var(--blue);color:white;font:inherit;font-weight:600;cursor:pointer}
+button.secondary{background:var(--pale);color:var(--navy)}button.danger{background:#fff0f0;color:var(--red);border:1px solid #f1cccc}button:disabled{opacity:.5}
+.row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.stat strong{display:block;font-size:28px;font-weight:650}.stat span{font-size:13px;color:var(--muted)}
+.item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}.item:last-child{border:0}
+.item-icon{width:48px;height:48px;border-radius:14px;background:var(--pale);display:grid;place-items:center;font-size:22px}
+.item-main{flex:1;min-width:0}.item-main strong{display:block}.item-main small{color:var(--muted)}
+.pill{display:inline-block;padding:4px 9px;border-radius:30px;font-size:11px;background:var(--pale);color:var(--blue)}
+.pill.green{background:#e8f5ee;color:var(--green)}.pill.amber{background:#fff3d9;color:var(--amber)}
+.empty{text-align:center;padding:30px 10px;color:var(--muted)}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;gap:8px;padding:10px;z-index:4}
+nav button{background:transparent;color:var(--muted);padding:9px 13px;font-size:13px}nav button.active{background:var(--pale);color:var(--navy)}
+.hidden{display:none!important}
+.overlay{position:fixed;inset:0;background:#0c1b26a8;z-index:10;display:flex;align-items:center;justify-content:center;padding:14px}
+.dialog{background:white;border-radius:22px;width:min(560px,100%);max-height:90vh;overflow:auto;padding:22px}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.qr-wrap{display:flex;justify-content:center;padding:18px}.qr-wrap>div{padding:12px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.timeline{border-left:2px solid var(--line);margin:12px 0 0 7px;padding-left:17px}.event{margin:0 0 14px}.event strong{display:block}.event small{color:var(--muted)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.notice{background:#fff8e8;border:1px solid #f1dfb6;padding:12px;border-radius:12px;font-size:13px;color:#6d5115}
+@media(max-width:650px){main{margin:18px auto}.grid{grid-template-columns:repeat(2,1fr)}.item{align-items:flex-start}.item .actions{width:100%}.item .actions button{flex:1}nav{justify-content:space-around;gap:0}nav button{padding:9px 7px;font-size:12px}}
+</style>
+</head>
 <body>
-<header class="top"><div class="topin"><div class="logo"><div class="mark">⌗</div><div>EquipTrack<div class="tag">KNOW WHO HAS YOUR EQUIPMENT</div></div></div><div class="tag">MVP DEMO</div></div></header>
-<main class="wrap">
-
-<section id="signup">
- <div style="max-width:560px;margin:24px auto">
-  <div class="card" style="padding:22px">
-   <div class="tag">CREATE YOUR ACCOUNT</div>
-   <h1 style="margin-top:7px">Welcome to EquipTrack</h1>
-   <p>Set up your profile to start tracking equipment and handoffs. Email, phone number and location are required.</p>
-   <form class="form" onsubmit="signUp(event)">
-    <div class="field"><label>Full name *</label><input id="signupName" autocomplete="name" required placeholder="Your full name"></div>
-    <div class="field"><label>Email address *</label><input id="signupEmail" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-    <div class="field"><label>Phone number *</label><input id="signupPhone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9() -]{8,20}" required placeholder="+91 98765 43210"></div>
-    <div class="field"><label>Location *</label><input id="signupLocation" autocomplete="street-address" required placeholder="City, area or business location"></div>
-    <div class="field"><label>Account type *</label><select id="signupType" required><option value="Individual">Individual</option><option value="Business">Business</option></select></div>
-    <div class="field"><label>Business / organisation name (optional)</label><input id="signupBusiness" placeholder="Business name"></div>
-    <div class="field"><label>Create a password for this demo *</label><input id="signupPassword" type="password" minlength="6" required placeholder="At least 6 characters"></div>
-    <button class="primary" style="width:100%">Create my demo account</button>
-   </form>
-   <p class="tag" style="margin-top:13px">Prototype only: profile details are saved on this device. Email and phone verification and secure cloud login are not active yet. Do not reuse a password from another account.</p>
-  </div>
- </div>
+<header><div class="logo">#</div><div><div class="brand">EquipTrack</div><div class="tagline">KNOW WHO HAS YOUR EQUIPMENT</div></div><div class="demo">MVP DEMO</div></header>
+<main>
+<section id="signup" class="card signup">
+  <div class="eyebrow">Create your account</div><h1>Welcome to EquipTrack</h1>
+  <p class="muted">Set up your profile to start tracking equipment and handoffs.</p>
+  <form id="signupForm">
+    <div class="field"><label for="fullName">Full name *</label><input id="fullName" autocomplete="name" required placeholder="Your full name"></div>
+    <div class="field"><label for="email">Email address *</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+    <div class="field"><label for="phone">Phone number *</label><input id="phone" type="tel" autocomplete="tel" required placeholder="+91 98765 43210"></div>
+    <div class="field"><label for="location">Location *</label><input id="location" autocomplete="street-address" required placeholder="City, area or business location"></div>
+    <div class="field"><label for="accountType">Account type *</label><select id="accountType"><option>Individual</option><option>Business</option></select></div>
+    <div class="field"><label for="businessName">Business / organisation name (optional)</label><input id="businessName" placeholder="Business name"></div>
+    <button type="submit" style="width:100%">Create demo account</button>
+  </form>
+  <p class="muted" style="font-size:12px;margin-top:14px">Demo only: profile and equipment data are saved in this browser. This is not secure cloud login; do not store sensitive information.</p>
 </section>
 
 <section id="dashboard" class="hidden">
- <div class="row"><div><div class="tag">YOUR WORKSPACE</div><h1>Equipment overview</h1><p id="profileLine" style="margin:0">Track every item, handoff and return.</p></div><button class="primary" onclick="openAdd()">＋ Add item</button></div>
- <div class="grid"><div class="stat"><strong id="total">0</strong><span>Total equipment</span></div><div class="stat"><strong id="away">0</strong><span>With others</span></div><div class="stat"><strong id="pending">0</strong><span>Pending handoffs</span></div><div class="stat"><strong id="returned">0</strong><span>Returned to owner</span></div></div>
- <div class="card"><div class="row"><h2>Your equipment</h2><button class="soft" onclick="openAdd()">＋ Add equipment</button></div><div id="items" class="stack"></div></div>
- <div class="card" style="margin-top:13px"><h2>Recent activity</h2><div id="recent"></div></div>
+  <div class="eyebrow">Your workspace</div>
+  <div class="row"><div><h1>Equipment overview</h1><p id="welcome" class="muted"></p></div><button id="addTop">＋ Add item</button></div>
+  <div class="grid">
+    <div class="stat"><strong id="totalCount">0</strong><span>Total equipment</span></div>
+    <div class="stat"><strong id="awayCount">0</strong><span>With others</span></div>
+    <div class="stat"><strong id="pendingCount">0</strong><span>Pending handoffs</span></div>
+    <div class="stat"><strong id="returnedCount">0</strong><span>Returned to owner</span></div>
+  </div>
+  <div class="card"><div class="row"><h2>Your equipment</h2><button class="secondary" id="addInside">＋ Add equipment</button></div><div id="itemsList"></div></div>
+  <div class="card"><h2>Recent activity</h2><div id="recentList" class="muted">No activity yet.</div></div>
 </section>
-<section id="history" class="hidden"><h1>Handoff history</h1><p>Every accepted handoff is recorded here.</p><div class="card" id="allhistory"></div></section>
-<section id="alerts" class="hidden"><h1>Notifications</h1><p>Owner updates and pending actions.</p><div class="card" id="notifications"></div></section>
-<section id="guide" class="hidden"><h1>How EquipTrack works</h1><div class="card stack"><p><b>1. Register equipment</b><br>Owner adds an item and creates its QR code.</p><p><b>2. Start a handoff</b><br>Current holder enters the next person's name.</p><p><b>3. Receiver accepts</b><br>Only after acceptance does the current holder change.</p><p><b>4. Owner is informed</b><br>Every accepted handoff creates an owner notification.</p><p><b>5. Return to owner</b><br>Owner confirms physical receipt to close the chain.</p></div><div class="notice" style="margin-top:12px">Demo limitation: this first phone-only prototype stores data in this browser on this device. It does not yet synchronise between different people's phones. We'll connect secure accounts and a shared database in the next stage.</div></section>
+<section id="history" class="hidden"><h1>Handoff history</h1><p class="muted">Accepted handoffs and returns recorded on this device.</p><div class="card" id="historyList"></div></section>
+<section id="alerts" class="hidden"><h1>Notifications</h1><p class="muted">Demo notifications for actions recorded on this device.</p><div class="card" id="alertsList"></div></section>
+<section id="guide" class="hidden"><h1>How EquipTrack works</h1><div class="card"><p><b>1. Register equipment</b><br>Owner adds an item and creates its QR code.</p><p><b>2. Start a handoff</b><br>Current holder enters the recipient's name.</p><p><b>3. Recipient accepts</b><br>In this demo, acceptance is simulated on the same device.</p><p><b>4. Return to owner</b><br>Owner confirms the physical return.</p><div class="notice">Important: this is a browser-only prototype. It does not yet sync between phones, send real notifications, verify email/phone, or provide a secure backend.</div></div></section>
+<section id="profile" class="hidden"><h1>Your profile</h1><div class="card" id="profileDetails"></div><button class="danger" id="signOut">Sign out on this device</button></section>
 </main>
-<nav class="nav hidden" id="appnav"><button class="active" data-tab="dashboard" onclick="tab('dashboard',this)">⌂ Home</button><button data-tab="history" onclick="tab('history',this)">↗ History</button><button data-tab="alerts" onclick="tab('alerts',this)">♧ Alerts</button><button data-tab="guide" onclick="tab('guide',this)">ⓘ Guide</button><button onclick="showProfile()">☻ Profile</button></nav>
-<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="sheet"><div class="sheethead"><h2 id="mtitle">Add equipment</h2><button class="ghost" onclick="closeModal()">✕</button></div><div id="mbody"></div></div></div>
-<footer>EquipTrack prototype · Demo data stays in this browser · Do not use for valuable assets yet</footer>
+<nav id="appNav" class="hidden">
+<button data-page="dashboard" class="active">⌂ Home</button><button data-page="history">↗ History</button><button data-page="alerts">♧ Alerts</button><button data-page="guide">ⓘ Guide</button><button data-page="profile">● Profile</button>
+</nav>
+<div id="overlay" class="overlay hidden"><div class="dialog"><div class="dialog-head"><h2 id="dialogTitle">Details</h2><button class="secondary" id="closeDialog" aria-label="Close">✕</button></div><div id="dialogBody"></div></div></div>
 <script>
-const KEY='equiptrack_phone_demo_v1';let db=JSON.parse(localStorage.getItem(KEY)||'{"items":[],"notes":[],"profile":null}');if(!('profile' in db))db.profile=null;let current=null;
-const save=()=>{localStorage.setItem(KEY,JSON.stringify(db));render()};
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const date=()=>new Date().toLocaleString();
-
-function signUp(e){
- e.preventDefault();
- const profile={name:document.getElementById('signupName').value.trim(),email:document.getElementById('signupEmail').value.trim(),phone:document.getElementById('signupPhone').value.trim(),location:document.getElementById('signupLocation').value.trim(),type:document.getElementById('signupType').value,business:document.getElementById('signupBusiness').value.trim(),created:date()};
- if(!profile.name||!profile.email||!profile.phone||!profile.location){alert('Please complete all required fields.');return}
- db.profile=profile;db.notes.unshift({text:`Welcome to EquipTrack, ${profile.name}. Your demo profile was created on this device.`,at:date()});
- save();document.getElementById('signup').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');document.getElementById('appnav').classList.remove('hidden');
- document.getElementById('profileLine').textContent=`Welcome, ${profile.name} · ${profile.type} · ${profile.location}`;
+(function(){
+'use strict';
+const KEY='equiptrack_demo_clean_v1';
+const BASE='https://ssgouda89-tech.github.io/equiptrack/';
+let db={profile:null,items:[],activity:[],notifications:[]};
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const now=()=>new Date().toLocaleString();
+const id=()=>('EQ-'+Math.random().toString(36).slice(2,9).toUpperCase());
+function load(){try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&Array.isArray(saved.items))db={...db,...saved};}catch(e){console.warn('Saved demo data could not be read',e);}}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render();}
+function activity(text){db.activity.unshift({text,at:now()});}
+function notify(text){db.notifications.unshift({text,at:now()});}
+function page(name){['dashboard','history','alerts','guide','profile'].forEach(p=>$(p).classList.toggle('hidden',p!==name));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));}
+function showDialog(title,html){$('dialogTitle').textContent=title;$('dialogBody').innerHTML=html;$('overlay').classList.remove('hidden');}
+function closeDialog(){$('overlay').classList.add('hidden');$('dialogBody').innerHTML='';}
+function qrText(item){return BASE+'?item='+encodeURIComponent(item.id);}
+function qrHtml(item){return '<div class="qr-wrap"><div id="qrCode"></div></div><p class="muted" style="text-align:center;font-size:12px">QR ID: '+esc(item.id)+'</p><p style="text-align:center"><a href="'+esc(qrText(item))+'" target="_blank" rel="noopener">Open item link</a></p>';}
+function viewItem(itemId){const item=db.items.find(x=>x.id===itemId);if(!item){showDialog('Item not found','<p>This QR code belongs to an item that is not saved in this browser. A shared backend is needed to look it up on another phone.</p>');return;}showItem(itemId);}
+function showItem(itemId){const item=db.items.find(x=>x.id===itemId);if(!item)return;
+ const pending=item.pending?'<div class="notice">Handoff awaiting acceptance from '+esc(item.pending.to)+'</div>':'';
+ const actions=item.pending?'<div class="actions"><button id="acceptBtn">Accept handoff (demo)</button><button class="danger" id="cancelBtn">Cancel request</button></div>':
+ (item.holder!==item.owner?'<div class="actions"><button id="returnBtn">Request return to owner</button></div>':'<div class="actions"><button id="passBtn">Pass to someone</button></div>');
+ showDialog(item.name,'<p><span class="pill '+(item.holder===item.owner?'green':'amber')+'">'+(item.holder===item.owner?'With owner':'With another holder')+'</span></p><p class="muted">'+esc(item.category)+' · '+esc(item.serial||'No serial number')+'</p><p>'+esc(item.description||'')+'</p><div class="notice"><b>Legal owner:</b> '+esc(item.owner)+'<br><b>Current holder:</b> '+esc(item.holder)+'</div>'+qrHtml(item)+'<h3>Custody timeline</h3><div class="timeline">'+item.events.slice().reverse().map(e=>'<div class="event"><strong>'+esc(e.text)+'</strong><small>'+esc(e.at)+'</small></div>').join('')+'</div>'+pending+actions);
+ const qr=$('qrCode');if(qr&&window.QRCode)new QRCode(qr,{text:qrText(item),width:160,height:160});
+ if(item.pending){$('acceptBtn').onclick=()=>accept(item.id);$('cancelBtn').onclick=()=>cancel(item.id);}
+ else if(item.holder===item.owner){$('passBtn').onclick=()=>passForm(item.id);}
+ else {$('returnBtn').onclick=()=>requestReturn(item.id);}
 }
-function showProfile(){
- const p=db.profile;if(!p)return;
- openModal('Your profile',`<div class="stack"><p><b>Name</b><br>${esc(p.name)}</p><p><b>Email</b><br>${esc(p.email)}</p><p><b>Phone</b><br>${esc(p.phone)}</p><p><b>Location</b><br>${esc(p.location)}</p><p><b>Account type</b><br>${esc(p.type)}</p>${p.business?`<p><b>Business</b><br>${esc(p.business)}</p>`:''}<button class="danger" onclick="if(confirm('Sign out on this device? Your demo equipment data will remain saved.')){db.profile=null;save();closeModal();location.reload()}">Sign out</button></div>`);
+function addForm(){showDialog('Add equipment','<form id="addForm"><div class="field"><label>Equipment name *</label><input id="itemName" required placeholder="e.g. Dell laptop"></div><div class="field"><label>Category</label><select id="itemCategory"><option>Electronics</option><option>Furniture</option><option>Tools</option><option>Vehicle</option><option>Other</option></select></div><div class="field"><label>Serial / asset number</label><input id="itemSerial" placeholder="Optional"></div><div class="field"><label>Description</label><textarea id="itemDescription" placeholder="Optional details"></textarea></div><button type="submit" style="width:100%">Save and generate QR</button></form>');
+ $('addForm').onsubmit=e=>{e.preventDefault();const item={id:id(),name:$('itemName').value.trim(),category:$('itemCategory').value,serial:$('itemSerial').value.trim(),description:$('itemDescription').value.trim(),owner:db.profile.name,holder:db.profile.name,pending:null,events:[{text:'Registered by '+db.profile.name,at:now()}]};if(!item.name)return;db.items.unshift(item);activity(item.name+' — Registered');notify('New equipment registered: '+item.name);save();showItem(item.id);};
 }
-
-function tab(id,btn){document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));(btn||document.querySelector(`[data-tab="${id}"]`)).classList.add('active');render()}
-function openModal(title,html){document.getElementById('mtitle').textContent=title;document.getElementById('mbody').innerHTML=html;document.getElementById('modal').classList.remove('hidden')}
-function closeModal(){document.getElementById('modal').classList.add('hidden')}
-function openAdd(){openModal('Add equipment',`<form class="form" onsubmit="addItem(event)"><div class="field"><label>Equipment name *</label><input id="name" required placeholder="e.g. Office chair"></div><div class="field"><label>Category</label><select id="category"><option>Furniture</option><option>Tools</option><option>Electronics</option><option>Camera & media</option><option>Sports</option><option>Other</option></select></div><div class="field"><label>Serial / asset number (optional)</label><input id="serial" placeholder="e.g. CH-001"></div><div class="field"><label>Description (optional)</label><textarea id="desc" placeholder="Colour, condition or identifying details"></textarea></div><div class="field"><label>Owner name</label><input id="owner" value="Me" required></div><button class="primary">Save & generate QR</button></form>`)}
-function addItem(e){e.preventDefault();const itemName=document.getElementById('name').value.trim();const itemCategory=document.getElementById('category').value;const itemSerial=document.getElementById('serial').value.trim();const itemDesc=document.getElementById('desc').value.trim();const itemOwner=document.getElementById('owner').value.trim();if(!itemName||!itemOwner){alert('Please enter the equipment name and owner name.');return}let id='EQ-'+Math.random().toString(36).slice(2,9).toUpperCase();db.items.unshift({id,name:itemName,category:itemCategory,serial:itemSerial,desc:itemDesc,owner:itemOwner,holder:itemOwner,status:'with-owner',created:date(),events:[{type:'Registered',person:itemOwner,at:date(),note:'Equipment registered by owner'}],pending:null});save();closeModal();showItem(id)}
-function showItem(id){let x=db.items.find(i=>i.id===id);if(!x)return;current=id;openModal(x.name,`<div class="row"><span class="pill ${x.holder===x.owner?'green':'amber'}">${x.holder===x.owner?'With owner':'With '+esc(x.holder)}</span><span class="tag">${x.id}</span></div><p>${esc(x.category)} · ${esc(x.serial||'No asset number')}</p><p>${esc(x.desc||'No description')}</p><div class="notice"><b>Legal owner:</b> ${esc(x.owner)}<br><b>Current holder:</b> ${esc(x.holder)}</div><div id="qr"></div><p class="tag" style="text-align:center">QR identifies this demo item · ${x.id}</p><div class="actions"><button class="soft" onclick="makeQR('${x.id}')">Show QR</button><button class="ghost" onclick="startPass('${x.id}')">Pass to someone</button>${x.holder===x.owner?'':`<button class="primary" onclick="requestReturn('${x.id}')">Request return</button>`}</div>${x.pending?`<div class="notice" style="margin-top:12px">Pending acceptance by <b>${esc(x.pending.to)}</b><br><button class="primary" style="margin-top:8px" onclick="acceptPass('${x.id}')">Simulate receiver accepting</button> <button class="ghost" style="margin-top:8px" onclick="cancelPass('${x.id}')">Cancel</button></div>`:''}<h3>Custody timeline</h3><div class="timeline">${x.events.slice().reverse().map(v=>`<div class="event"><b>${esc(v.type)} · ${esc(v.person)}</b><br><small>${esc(v.at)}</small><div>${esc(v.note||'')}</div></div>`).join('')}</div>`);setTimeout(()=>makeQR(id),50)}
-function makeQR(id){let el=document.getElementById('qr');if(!el)return;el.innerHTML='';if(window.QRCode)new QRCode(el,{text:'https://ssgouda89-tech.github.io/equiptrack/?item='+id}
-function startPass(id){let x=db.items.find(i=>i.id===id);if(x.pending)return;openModal('Pass equipment',`<p>Current holder: <b>${esc(x.holder)}</b></p><form class="form" onsubmit="createPass(event,'${id}')"><div class="field"><label>Next person's name *</label><input id="recipient" required placeholder="e.g. Ravi"></div><div class="field"><label>Note (optional)</label><input id="passnote" placeholder="Reason for passing"></div><div class="field"><label>Expected return (optional)</label><input id="due" type="date"></div><div class="notice">The item will stay with ${esc(x.holder)} until the receiver accepts.</div><button class="primary">Create pending handoff</button></form>`)}
-function createPass(e,id){ e.preventDefault(); const item=db.items.find(function(row){return row.id===id;}); const recipientName=document.getElementById("recipient").value.trim(); const noteText=document.getElementById("passnote").value.trim(); const dueDate=document.getElementById("due").value; if(!recipientName){alert("Enter the next person name.");return;} item.pending={from:item.holder,to:recipientName,note:noteText,due:dueDate,at:date()}; db.notes.unshift({text:item.name+" handoff invitation sent to "+recipientName,at:date()}); save(); closeModal(); showItem(id); }
-function acceptPass(id){let x=db.items.find(i=>i.id===id);if(!x?.pending)return;let p=x.pending;x.holder=p.to;x.status='with-other';x.events.push({type:'Accepted handoff',person:p.to,at:date(),note:`Received from ${p.from}. ${p.note||''}`});x.pending=null;db.notes.unshift({text:`Owner update: ${x.name} was accepted by ${x.holder}.`,at:date()});save();showItem(id)}
-function cancelPass(id){let x=db.items.find(i=>i.id===id);x.pending=null;save();showItem(id)}
-function requestReturn(id){let x=db.items.find(i=>i.id===id);openModal('Confirm return',`<p>Has <b>${esc(x.holder)}</b> physically returned <b>${esc(x.name)}</b> to ${esc(x.owner)}?</p><div class="notice">For this demo, confirm only after the owner has received the item.</div><div class="actions" style="margin-top:15px"><button class="primary" onclick="confirmReturn('${id}')">Yes, owner received it</button><button class="ghost" onclick="closeModal()">Not yet</button></div>`)}
-function confirmReturn(id){let x=db.items.find(i=>i.id===id);x.events.push({type:'Returned to owner',person:x.owner,at:date(),note:`Return confirmed by owner. Previous holder: ${x.holder}`});x.holder=x.owner;x.status='with-owner';x.pending=null;db.notes.unshift({text:`${x.name} has been returned to its owner.`,at:date()});save();closeModal();showItem(id)}
-function render(){let items=db.items;document.getElementById('total').textContent=items.length;document.getElementById('away').textContent=items.filter(x=>x.holder!==x.owner).length;document.getElementById('pending').textContent=items.filter(x=>x.pending).length;document.getElementById('returned').textContent=items.filter(x=>x.events.some(e=>e.type==='Returned to owner')).length;
-document.getElementById('items').innerHTML=items.length?items.map(x=>`<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><div class="item" style="flex:1;min-width:0"><div class="pic">▣</div><div class="meta"><b>${esc(x.name)}</b><small>${x.id} · With ${esc(x.holder)}</small></div></div><span class="pill ${x.pending?'amber':x.holder===x.owner?'green':''}">${x.pending?'Pending':x.holder===x.owner?'With owner':'With holder'}</span><button class="ghost" onclick="showItem('${x.id}')">View</button></div>`).join(''):'<div class="empty">No equipment yet.<br>Add your first item to generate its QR code.</div>';
-let ev=items.flatMap(x=>x.events.map(e=>({...e,item:x.name,id:x.id}))).sort((a,b)=>b.at.localeCompare(a.at));document.getElementById('recent').innerHTML=ev.length?ev.slice(0,5).map(e=>`<p style="margin:9px 0"><b>${esc(e.item)}</b> — ${esc(e.type)}<br><small class="muted">${esc(e.person)} · ${esc(e.at)}</small></p>`).join(''):'<p>No activity yet.</p>';
-document.getElementById('allhistory').innerHTML=ev.length?ev.map(e=>`<p><b>${esc(e.item)}:</b> ${esc(e.type)} by ${esc(e.person)}<br><small class="muted">${esc(e.at)}</small></p>`).join(''):'<div class="empty">Your equipment history will appear here.</div>';
-document.getElementById('notifications').innerHTML=db.notes.length?db.notes.map(n=>`<p>🔔 ${esc(n.text)}<br><small class="muted">${esc(n.at)}</small></p>`).join(''):'<div class="empty">No notifications yet.</div>'}
-if(db.profile){document.getElementById('signup').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');document.getElementById('appnav').classList.remove('hidden');document.getElementById('profileLine').textContent=`Welcome, ${db.profile.name} · ${db.profile.type} · ${db.profile.location}`;}render();
-</script></body></html>
+function passForm(itemId){const item=db.items.find(x=>x.id===itemId);if(!item)return;showDialog('Pass equipment','<form id="passForm"><p class="muted">Item: '+esc(item.name)+'</p><div class="field"><label>Recipient full name *</label><input id="recipientName" required placeholder="Person receiving the item"></div><button type="submit" style="width:100%">Send handoff request</button></form><p class="muted" style="font-size:12px">Demo: recipient acceptance is simulated on this device.</p>');
+ $('passForm').onsubmit=e=>{e.preventDefault();const to=$('recipientName').value.trim();if(!to)return;item.pending={from:item.holder,to,at:now()};activity('Handoff requested for '+item.name+' to '+to);notify('Handoff awaiting acceptance: '+item.name);save();showItem(item.id);};
+}
+function accept(itemId){const item=db.items.find(x=>x.id===itemId);if(!item||!item.pending)return;const to=item.pending.to;item.holder=to;item.events.push({text:'Accepted by '+to,at:now()});item.pending=null;activity(item.name+' — Accepted by '+to);notify(item.name+' is now with '+to);save();showItem(item.id);}
+function cancel(itemId){const item=db.items.find(x=>x.id===itemId);if(!item)return;item.pending=null;activity('Handoff cancelled for '+item.name);save();showItem(item.id);}
+function requestReturn(itemId){const item=db.items.find(x=>x.id===itemId);if(!item)return;showDialog('Confirm return','<p>Has <b>'+esc(item.name)+'</b> physically been returned to '+esc(item.owner)+'?</p><div class="actions"><button id="confirmReturn">Yes, confirm return</button><button class="secondary" id="notYet">Not yet</button></div>');$('confirmReturn').onclick=()=>{const previous=item.holder;item.holder=item.owner;item.events.push({text:'Return confirmed by owner. Previous holder: '+previous,at:now()});activity(item.name+' — Returned to owner');notify(item.name+' has been returned to its owner');save();showItem(item.id);};$('notYet').onclick=closeDialog;}
+function render(){const profile=db.profile;if(!profile)return;
+ $('welcome').textContent='Welcome, '+profile.name+' · '+profile.type+' · '+profile.location;
+ $('totalCount').textContent=db.items.length;$('awayCount').textContent=db.items.filter(x=>x.holder!==x.owner).length;$('pendingCount').textContent=db.items.filter(x=>x.pending).length;$('returnedCount').textContent=db.items.filter(x=>x.events.some(e=>e.text.startsWith('Return confirmed'))).length;
+ $('itemsList').innerHTML=db.items.length?db.items.map(item=>'<div class="item"><div class="item-icon">▣</div><div class="item-main"><strong>'+esc(item.name)+'</strong><small>'+esc(item.id)+' · With '+esc(item.holder)+'</small><br><span class="pill '+(item.pending?'amber':item.holder===item.owner?'green':'')+'">'+(item.pending?'Pending handoff':item.holder===item.owner?'With owner':'With another holder')+'</span></div><button class="secondary" data-view="'+esc(item.id)+'">View / QR</button></div>').join(''):'<div class="empty">No equipment yet.<br>Add your first item to generate its QR code.</div>';
+ $('recentList').innerHTML=db.activity.length?db.activity.slice(0,5).map(a=>'<p><b>'+esc(a.text)+'</b><br><small class="muted">'+esc(a.at)+'</small></p>').join(''):'No activity yet.';
+ $('historyList').innerHTML=db.items.flatMap(item=>item.events.map(e=>({name:item.name,...e}))).sort((a,b)=>b.at.localeCompare(a.at)).map(e=>'<p><b>'+esc(e.name)+' — '+esc(e.text)+'</b><br><small class="muted">'+esc(e.at)+'</small></p>').join('')||'<div class="empty">No handoff history yet.</div>';
+ $('alertsList').innerHTML=db.notifications.map(n=>'<p>'+esc(n.text)+'<br><small class="muted">'+esc(n.at)+'</small></p>').join('')||'<div class="empty">No notifications yet.</div>';
+ $('profileDetails').innerHTML='<p><b>Name:</b> '+esc(profile.name)+'</p><p><b>Email:</b> '+esc(profile.email)+'</p><p><b>Phone:</b> '+esc(profile.phone)+'</p><p><b>Location:</b> '+esc(profile.location)+'</p><p><b>Account:</b> '+esc(profile.type)+'</p>';
+ document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>showItem(b.dataset.view));
+}
+$('signupForm').onsubmit=e=>{e.preventDefault();const profile={name:$('fullName').value.trim(),email:$('email').value.trim(),phone:$('phone').value.trim(),location:$('location').value.trim(),type:$('accountType').value,business:$('businessName').value.trim()};if(!profile.name||!profile.email||!profile.phone||!profile.location){alert('Please complete all required fields.');return;}db.profile=profile;activity('Welcome to EquipTrack, '+profile.name);localStorage.setItem(KEY,JSON.stringify(db));$('signup').classList.add('hidden');$('dashboard').classList.remove('hidden');$('appNav').classList.remove('hidden');page('dashboard');render();};
+$('addTop').onclick=addForm;$('addInside').onclick=addForm;$('closeDialog').onclick=closeDialog;$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog();});
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>page(b.dataset.page));
+$('signOut').onclick=()=>{if(confirm('Sign out on this device? Your demo equipment data will remain saved.')){db.profile=null;localStorage.setItem(KEY,JSON.stringify(db));location.href=BASE;}};
+load();
+const query=new URLSearchParams(location.search).get('item');
+if(db.profile){$('signup').classList.add('hidden');$('dashboard').classList.remove('hidden');$('appNav').classList.remove('hidden');page('dashboard');render();if(query)viewItem(query);}
+else if(query){/* New device has no shared backend data; show signup and explain limitation after profile creation. */}
+})();
+</script>
+</body>
+</html>
